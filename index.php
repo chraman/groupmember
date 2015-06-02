@@ -20,10 +20,10 @@
 		echo '<h1>Hello ',$user_graph['first_name'],'</h1>';
 		echo '<p>Your birthday is: ',$user_graph['birthday'],'</p>';
 		echo '<p>Your User ID is: ', $user, '</p>';
-		if ($user_graph_page['data']):
+		if ($user_graph_page['groups']):
 			echo '<h2>Facebook pages to post</h2>';
 			echo '<form action="posted.php" method="post">';
-			foreach ($user_graph_page['data'] as $key => $value) {
+			foreach ($user_graph_page['groups'][]'data'] as $key => $value) {
 				echo '<input type="checkbox" name="group[]" value="'.$value['id'].'" /> Name : ',$value['name'],', Group Id :'.$value['id'].'.</br>';
 			}
 			echo '<input type="submit" value="POST"></br>';
