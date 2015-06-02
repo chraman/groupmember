@@ -8,7 +8,7 @@
 ?>
 <?php
 	$agroup = $_POST['group'];
-	if(!empty($apage)){
+	if(!empty($agroup)){
 			$num=count($apage);
 			for($i=0; $i<$num; $i++)
 			{
