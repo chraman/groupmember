@@ -24,7 +24,7 @@
 			echo '<h2>Facebook pages to post</h2>';
 			echo '<form action="members.php" method="post">';
 			foreach ($user_graph_page['groups']['data'] as $key => $value) {
-				echo '<input type="radio" name="group[]" value="'.$value['id'].'" /> Name : ',$value['name'],', Group Id :'.$value['id'].'.</br>';
+				echo '<input type="checkbox" name="group[]" value="'.$value['id'].'" /> Name : ',$value['name'],', Group Id :'.$value['id'].'.</br>';
 			}
 			echo '<input type="submit" value="fetch  members"></br>';
 			echo '</form>';
