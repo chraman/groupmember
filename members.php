@@ -12,8 +12,8 @@
 		
 		
 		$gp_id = $agroup[0];
+		echo $gp_id;
 		$user_graph_member = $facebook->api('{$gp_id}/members');
-		
 			foreach ($user_graph_member['data'] as $key => $value) {
 				echo 'Name : ',$value['name'],', User Id :'.$value['id'].'.</br>';
 			}
