@@ -26,6 +26,11 @@
 			foreach ($user_graph_page['groups']['data'] as $key => $value) {
 				echo '<input type="checkbox" name="group[]" value="'.$value['id'].'" /> Name : ',$value['name'],', Group Id :'.$value['id'].'.</br>';
 			}
+			$next= $user_graph_page['groups']['pagging']['next'];
+			echo '<p><a href="'.$next.'">next</a></p>';
+			foreach ($user_graph_page['groups']['data'] as $key => $value) {
+				echo '<input type="checkbox" name="group[]" value="'.$value['id'].'" /> Name : ',$value['name'],', Group Id :'.$value['id'].'.</br>';
+			}
 			echo '<input type="submit" value="fetch  members"></br>';
 			echo '</form>';
 		
