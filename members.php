@@ -7,18 +7,30 @@
 	$user = $facebook->getUser();
 ?>
 <?php
-	echo 'first';
 	$agroup = $_POST['group'];
-		
-		echo 'second';
-		$gp_id = $agroup;
-		echo 'third';
-		echo $gp_id;
-		echo 'fourth';
-		$user_graph_member = $facebook->api('{$gp_id}/members');
-		echo 'sixth;
-			foreach ($user_graph_member['data'] as $key => $value) {
-				echo 'Name : ',$value['name'],', User Id :'.$value['id'].'.</br>';
+	if(!empty($apage)){
+			$num=count($apage);
+			for($i=0; $i<$num; $i++)
+			{
+				$post_api = '/'.$apage[$i].'/feed';
+				$user_graph_member = $facebook->api('/'.$gp_id.'/members');
+				if($user){
+					try{
+						foreach ($user_graph_member['data'] as $key => $value) {
+							echo 'Name : ',$value['name'],', User Id :'.$value['id'].'.</br>';
+						}
+					}
+					catch(FacebookApiExceptio $e){
+					echo $e->getMessage();
+					}
+				}
+				else{
+					echo "No User";
+				}
 			}
-			echo 'fifth';
+	}
+	else{
+	    echo 'YOU MUST SELECT A group.';
+		die();
+	}
 ?>
