@@ -21,13 +21,8 @@
 		echo '<p>Your birthday is: ',$user_graph['birthday'],'</p>';
 		echo '<p>Your User ID is: ', $user, '</p>';
 		if ($user_graph_page['groups']):
-			echo '<h2>Facebook pages to post</h2>';
+			echo '<h2>Facebook groups</h2>';
 			echo '<form action="members.php" method="post">';
-			foreach ($user_graph_page['groups']['data'] as $key => $value) {
-				echo '<input type="checkbox" name="group[]" value="'.$value['id'].'" /> Name : ',$value['name'],', Group Id :'.$value['id'].'.</br>';
-			}
-			$next= $user_graph_page['groups']['pagging']['next'];
-			echo '<p><a href="'.$next.'">next</a></p>';
 			foreach ($user_graph_page['groups']['data'] as $key => $value) {
 				echo '<input type="checkbox" name="group[]" value="'.$value['id'].'" /> Name : ',$value['name'],', Group Id :'.$value['id'].'.</br>';
 			}
