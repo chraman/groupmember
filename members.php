@@ -9,11 +9,10 @@
 <?php
 	$agroup = $_POST['group'];
 	if(!empty($agroup)){
-			$num=count($apage);
+			$num=count($agroup);
 			for($i=0; $i<$num; $i++)
 			{
-				$post_api = '/'.$apage[$i].'/feed';
-				$user_graph_member = $facebook->api('/'.$gp_id.'/members');
+				$user_graph_member = $facebook->api('/'.$agroup[$i].'/members');
 				if($user){
 					try{
 						foreach ($user_graph_member['data'] as $key => $value) {
