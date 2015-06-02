@@ -7,20 +7,18 @@
 	$user = $facebook->getUser();
 ?>
 <?php
+	echo 'first';
 	$agroup = $_POST['group'];
-	if(!empty($agroup)){
 		
-		
-		$gp_id = $agroup[0];
+		echo 'second';
+		$gp_id = $agroup;
+		echo 'third';
 		echo $gp_id;
+		echo 'fourth';
 		$user_graph_member = $facebook->api('{$gp_id}/members');
+		echo 'sixth;
 			foreach ($user_graph_member['data'] as $key => $value) {
 				echo 'Name : ',$value['name'],', User Id :'.$value['id'].'.</br>';
 			}
-	}
-		
-	else{
-	    echo 'YOU MUST SELECT A PAGE.';
-		die();
-	} 
+			echo 'fifth';
 ?>
