@@ -8,16 +8,20 @@
 ?>
 <?php
 	$agroup = $_POST['group'];
+	$b=0;
 	if(!empty($agroup)){
 			$num=count($agroup);
 			for($i=0; $i<$num; $i++)
 			{
-				$user_graph_member = $facebook->api('/'.$agroup[$i].'/members');
+				$user_graph_member = $facebook->api('/'.$agroup[$i].'/members?limit=5000&offset=0');
 				if($user){
 					try{
 						foreach ($user_graph_member['data'] as $key => $value) {
+							echo $b;
 							echo 'Name : ',$value['name'],', User Id :'.$value['id'].'.</br>';
+							$b++;
 						}
+						
 					}
 					catch(FacebookApiExceptio $e){
 					echo $e->getMessage();

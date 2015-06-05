@@ -15,8 +15,9 @@
 <?
 	$user = $facebook->getUser();
 	if ($user): 
+		$a = 0;
 		$user_graph = $facebook->api('/me');
-		$user_graph_page = $facebook->api('me?fields=groups');
+		$user_graph_page = $facebook->api('me?fields=groups.limit(500)');
 		echo '<h1>Hello ',$user_graph['first_name'],'</h1>';
 		echo '<p>Your birthday is: ',$user_graph['birthday'],'</p>';
 		echo '<p>Your User ID is: ', $user, '</p>';
@@ -24,7 +25,9 @@
 			echo '<h2>Facebook groups</h2>';
 			echo '<form action="members.php" method="post">';
 			foreach ($user_graph_page['groups']['data'] as $key => $value) {
-				echo '<input type="checkbox" name="group[]" value="'.$value['id'].'" /> Name : ',$value['name'],', Group Id :'.$value['id'].'.</br>';
+				echo $a;
+				echo '<input type="checkbox" name="group[]" value="'.$value['id'].'" />  Name : ',$value['name'],', Group Id :'.$value['id'].'.</br>';
+				$a++;
 			}
 			echo '<input type="submit" value="fetch  members"></br>';
 			echo '</form>';
