@@ -22,6 +22,7 @@
 	    }
 		catch(FacebookApiException $e){
 		error_log($e);
+		echo $e;
 		$user = NULL;
 	    }
 	}
