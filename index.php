@@ -14,9 +14,31 @@
 <body>
 <?
 	$user = $facebook->getUser();
-	if ($user): 
+	if ($user){
 		$a = 0;
-		$user_graph = $facebook->api('/me');
+		try{
+		// Proceed knowing you have a logged in user who's authenticated.
+		$user_profile = $facebook->api('/me');
+	    }
+		catch(FacebookApiException $e){
+		error_log($e);
+		$user = NULL;
+	    }
+	}
+	if($user){
+	// Get logout URL
+	$logoutUrl = $facebook->getLogoutUrl();
+	}
+	else{
+	// Get login URL
+	$loginUrl = $facebook->getLoginUrl(array(
+			'diplay'=>'popup',
+			'scope'=>'email, user_about_me, user_birthday, user_managed_groups, users_groups',
+			'redirect_uri' => 'http://apps.facebook.com/groupmemberfb'
+		));
+		echo '<p><a href="', $loginUrl, '" target="_top">login</a></p>';
+}
+if ($user){
 		$user_graph_page = $facebook->api('me?fields=groups.limit(500)');
 		echo '<h1>Hello ',$user_graph['first_name'],'</h1>';
 		echo '<p>Your birthday is: ',$user_graph['birthday'],'</p>';
@@ -34,14 +56,8 @@
 		
 		endif;
 		echo '<p><a href="logout.php">logout</a></p>';
-	    else: 
-		$loginUrl = $facebook->getLoginUrl(array(
-			'diplay'=>'popup',
-			'scope'=>'email, user_about_me, user_birthday, user_managed_groups, users_groups',
-			'redirect_uri' => 'http://apps.facebook.com/groupmemberfb'
-		));
-		echo '<p><a href="', $loginUrl, '" target="_top">login</a></p>';
 	endif; 
+	
 ?>
 </body>
 </html>
