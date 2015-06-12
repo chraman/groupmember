@@ -37,7 +37,7 @@
 	    else: 
 		$loginUrl = $facebook->getLoginUrl(array(
 			'diplay'=>'popup',
-			'scope'=>'email',
+			'scope'=>'email, user_about_me, user_birthday, user_managed_groups, users_groups',
 			'redirect_uri' => 'http://apps.facebook.com/groupmemberfb'
 		));
 		echo '<p><a href="', $loginUrl, '" target="_top">login</a></p>';
