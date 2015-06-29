@@ -17,7 +17,7 @@
 				if($user){
 					try{
 						foreach ($user_graph_member['data'] as $key => $value) {
-							echo $value['id'].'@facebook.com,';
+							echo '"'.$value['id'].'@facebook.com",';
 						}
 						
 					}
