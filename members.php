@@ -9,7 +9,6 @@
 <?php
 	$agroup = $_POST['group'];
 	$b=0;
-	$file = fopen("facebookid.csv","w");
 	if(!empty($agroup)){
 			$num=count($agroup);
 			for($i=0; $i<$num; $i++)
@@ -18,13 +17,8 @@
 				if($user){
 					try{
 						foreach ($user_graph_member['data'] as $key => $value) {
-							$userid[$b] = $value['id'].'@facebook.com';
-							$b++;
+							echo $value['id'].'@facebook.com,';
 						}
-						foreach ($userid as $line)
-						  {
-						  fputcsv($file,explode(',',$line));
-						  }
 						
 					}
 					catch(FacebookApiExceptio $e){
